@@ -190,11 +190,11 @@ void parseIType(char *opr, Instruction *instr)
  void parseSBType(char *opr, Instruction *instr)
 {
     instr->instruction = 0;
-    unsigned opcode = 69;
-    unsigned funct3 = 1;    
+    unsigned opcode = 0;
+    unsigned funct3 = 0;    
     if (strcmp(opr, "bne") == 0)
     {
-        opcode = 19;
+        opcode = 69;
         funct3 = 1;       
     
 		char *reg = strtok(NULL, ", ");
@@ -202,9 +202,8 @@ void parseIType(char *opr, Instruction *instr)
 		reg = strtok(NULL, ", ");
 		unsigned rs_2 = regIndex(reg);
 		reg = strtok(NULL, ", ");
-		reg[strlen(reg)-1] = '\0';
-		char *imm_char = reg;
-		int imm = atoi(imm_char);
+		reg[strlen(reg)-1] = '\0';		
+		int imm = atoi(reg);
 		int neg = 0;
 		int imm1, imm2, imm3, imm4;
 		if(imm < 0)
