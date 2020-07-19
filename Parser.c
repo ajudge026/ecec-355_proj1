@@ -217,7 +217,7 @@ void parseIType(char *opr, Instruction *instr)
 		imm2 = (int)(imm/ pow(2,4));
 		imm3 = (int)(imm/ pow(2,10))>>4;
 		
-		instr->instruction |= opcode;
+		instr->instruction |= opcode;		
 		instr->instruction |= (imm1 << 7);
 		instr->instruction |= (imm2 << (7 + 1));		
 		instr->instruction |= (funct3 << (7 + 1 +  4));
@@ -225,7 +225,16 @@ void parseIType(char *opr, Instruction *instr)
 		instr->instruction |= (rs_2 << (7+1+4+3+5));
 		instr->instruction |= (imm3 << (7+1+4+3+5+5));	
 		instr->instruction |= (neg << (7+1+4+3+5+5+6));			
-				
+		
+		printf("opcode -%d\n",opcode);
+		printf("imm1 -%d\n",imm1);
+		printf("imm2 -%d\n",imm2);
+		printf("funct3-%d\n",funct3);
+		printf("rs_1 -%d\n",rs_1);
+		printf("rs_2-%d\n",rs_2);
+		printf("imm3-%d\n",imm3);
+		printf("neg -%d\n",neg);
+		
 	}
 }
  
