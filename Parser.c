@@ -211,17 +211,20 @@ void parseIType(char *opr, Instruction *instr)
 			//two's comp 
 			imm = (~abs(imm) )+1;
 			neg = 1;
-			imm1 = ((int) (imm / pow(2,11)))>>11;
-			imm2 = (int)(imm/ pow(2,4));
-		}		// Contruct instruction		
+			
+		}		// Contruct instruction				
+		imm1 = ((int) (imm / pow(2,11)))>>11;
+		imm2 = (int)(imm/ pow(2,4));
+		imm3 = (int)(imm/ pow(2,10))>>4;
+		
 		instr->instruction |= opcode;
 		instr->instruction |= (imm1 << 7);
-		instr->instruction |= (imm2 << (7 + 1));
-		instr->instruction |= (imm << (7 + 1 + 5));		
-		instr->instruction |= (funct3 << (7 + 5 + 1 + 4));
-		instr->instruction |= (rs_1 << (7 + 5 + 1 + 4 + 3));		
-		instr->instruction |= (rs_2 << (7 + 5 + 1 + 4 + 3 + 5));
-		instr->instruction |= (neg << (7 + 5 + 1 + 4 + 3 + 5));		
+		instr->instruction |= (imm2 << (7 + 1));		
+		instr->instruction |= (funct3 << (7 + 1 +  4));
+		instr->instruction |= (rs_1 << (7 + 1 +  4 + 3));		
+		instr->instruction |= (rs_2 << (7+1+4+3+5));
+		instr->instruction |= (imm3 << (7+1+4+3+5+5));	
+		instr->instruction |= (neg << (7+1+4+3+5+5+7));			
 				
 	}
 }
