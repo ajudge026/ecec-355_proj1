@@ -213,7 +213,7 @@ void parseIType(char *opr, Instruction *instr)
 			neg = 1;
 			
 		}		// Contruct instruction				
-		imm1 = ((int) (imm / pow(2,11)))>>11;
+		imm1 = ((int) (imm / pow(2,11)))>>10;
 		imm2 = (int)(imm/ pow(2,4));
 		imm3 = (int)(imm/ pow(2,10))>>4;
 		
@@ -224,7 +224,7 @@ void parseIType(char *opr, Instruction *instr)
 		instr->instruction |= (rs_1 << (7 + 1 +  4 + 3));		
 		instr->instruction |= (rs_2 << (7+1+4+3+5));
 		instr->instruction |= (imm3 << (7+1+4+3+5+5));	
-		instr->instruction |= (neg << (7+1+4+3+5+5+7));			
+		instr->instruction |= (neg << (7+1+4+3+5+5+6));			
 				
 	}
 }
