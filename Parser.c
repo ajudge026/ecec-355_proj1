@@ -54,7 +54,7 @@ void loadInstructions(Instruction_Memory *i_mem, const char *trace)
 		// Extract operation for SB-Type		
      else if (strcmp(raw_instr, "bne") == 0  )
         {
-            parseIType(raw_instr, &(i_mem->instructions[IMEM_index]));
+            parseSBType(raw_instr, &(i_mem->instructions[IMEM_index]));
             i_mem->last = &(i_mem->instructions[IMEM_index]);
         } 
 
