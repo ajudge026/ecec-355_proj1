@@ -205,7 +205,7 @@ void parseIType(char *opr, Instruction *instr)
 		char *imm_char = reg;
 		int imm = atoi(imm_char);
 		int neg = 0;
-		int imm1, imm2, imm3, imm4;
+		double imm1, imm2, imm3, imm4;
 		if(imm < 0)
 		{
 			//two's comp 
