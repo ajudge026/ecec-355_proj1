@@ -126,7 +126,8 @@ void parseIType(char *opr, Instruction *instr)
 
 		reg = strtok(NULL, ", ");
 		reg[strlen(reg)-1] = '\0';
-		unsigned imm = *reg;
+		unsigned imm = atoi(reg);
+		
 
 		// Contruct instruction
 		instr->instruction |= opcode;
