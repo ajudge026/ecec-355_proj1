@@ -142,11 +142,11 @@ void parseIType(char *opr, Instruction *instr)
 		  
 
 		char *reg = strtok(NULL, ", ");
-		char immChar = strtok(NULL, "(");
+		char *immChar = strtok(NULL, "(");
 		unsigned imm = atoi(immChar);
 		unsigned rd = regIndex(reg);
 
-		rs1 = strtok(NULL, ")");
+		reg = strtok(NULL, ")");
 		unsigned rs_1 = regIndex(reg);
 
 		// Contruct instruction
@@ -202,10 +202,10 @@ void parseIType(char *opr, Instruction *instr)
 		unsigned rs_2 = regIndex(reg);
 		reg = strtok(NULL, ", ");
 		reg[strlen(reg)-1] = '\0';
-		char imm_char = reg;
+		char *imm_char = reg;
 		int imm = atoi(imm_char);
 		int neg = 0;
-		int imm1, imm2, imm3, imm4
+		int imm1, imm2, imm3, imm4;
 		if(imm < 0)
 		{
 			//two's comp 
