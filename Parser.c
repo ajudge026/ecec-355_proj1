@@ -211,8 +211,8 @@ void parseIType(char *opr, Instruction *instr)
 			//two's comp 
 			imm = (~abs(imm) )+1;
 			neg = 1;
-			imm1 = (imm / pow(2,11))>>11;
-			imm2 = (imm/ pow(2,4))
+			imm1 = ((int) (imm / pow(2,11)))>>11;
+			imm2 = (int)(imm/ pow(2,4));
 		}		// Contruct instruction		
 		instr->instruction |= opcode;
 		instr->instruction |= (imm1 << 7);
