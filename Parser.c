@@ -222,7 +222,7 @@ void parseIType(char *opr, Instruction *instr)
 		imm2 = imm; // imm 4:1
 		imm2 = 15&imm2;// [4:1]
 		imm3 = imm;
-		imm3 = 63&(imm3>>4) // imm 10:5
+		imm3 = 63&(imm3>>4); // imm 10:5
 		
 		instr->instruction |= opcode;		
 		instr->instruction |= (imm1 << 7);
