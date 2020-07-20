@@ -204,6 +204,7 @@ void parseIType(char *opr, Instruction *instr)
 		reg = strtok(NULL, ", ");
 		reg[strlen(reg)-1] = '\0';		
 		int imm = atoi(reg);
+		printf("The imm initial number is %d\n",imm);
 		int neg = 0;
 		int imm1, imm2, imm3, imm4;
 		if(imm < 0)
@@ -212,7 +213,9 @@ void parseIType(char *opr, Instruction *instr)
 			imm = (~abs(imm) )+1;
 			neg = 1;
 			
-		}		// Contruct instruction				
+		}
+		printf("The twos comp of the imm is %d\n");
+		// Contruct instruction				
 		imm1 = ((int) (imm / pow(2,11)))>>10;
 		imm2 = (int)(imm/ pow(2,4));
 		imm3 = (int)(imm/ pow(2,10))>>4;
