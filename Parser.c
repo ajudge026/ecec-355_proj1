@@ -217,7 +217,7 @@ void parseIType(char *opr, Instruction *instr)
 		printf("The twos comp of the imm is %d\n",imm);
 		// Contruct instruction				
 		imm1 = imm;
-		imm1 = ((imm1 & (1 << 10)) ;
+		imm1 = (imm1 & (1 << 10)) ;
 		imm1 = imm1 >> 10;	
 		imm2 = imm;
 		imm2 = (imm2<<28);
