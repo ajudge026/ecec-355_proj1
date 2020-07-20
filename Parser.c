@@ -194,7 +194,7 @@ void parseIType(char *opr, Instruction *instr)
     unsigned funct3 = 0;    
     if (strcmp(opr, "bne") == 0)
     {
-        opcode = 69;
+        opcode = 103;
         funct3 = 1;       
     
 		char *reg = strtok(NULL, ", ");
@@ -216,15 +216,13 @@ void parseIType(char *opr, Instruction *instr)
 		}
 		printf("The twos comp of the imm is %d\n",imm);
 		// Contruct instruction				
-		imm1 = imm;
+		imm1 = imm; // imm 11
 		imm1 = (imm1 & (1 << 10)) ;
 		imm1 = imm1 >> 10;	
-		imm2 = imm;
-		imm2 = (imm2<<28);
-		imm2 = imm2>>28;// [4:1]
+		imm2 = imm; // imm 4:1
+		imm2 = 15&imm2;// [4:1]
 		imm3 = imm;
-		imm3 = imm3 << (32-10);
-		imm3 = imm3 >> (32-6);
+		imm3 = 63&(imm3>>4) // imm 10:5
 		
 		instr->instruction |= opcode;		
 		instr->instruction |= (imm1 << 7);
