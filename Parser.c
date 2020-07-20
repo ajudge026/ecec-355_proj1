@@ -206,7 +206,7 @@ void parseIType(char *opr, Instruction *instr)
 		int imm = atoi(reg);
 		printf("The imm initial number is %d\n",imm);
 		int neg = 0;
-		int imm1, imm2, imm3, imm4;
+		unsigned int imm1, imm2, imm3, imm4;
 		if(imm < 0)
 		{
 			//two's comp 
@@ -216,9 +216,15 @@ void parseIType(char *opr, Instruction *instr)
 		}
 		printf("The twos comp of the imm is %d\n",imm);
 		// Contruct instruction				
-		imm1 = ((int) (imm / pow(2,10)))>>10;
-		imm2 = (int)(imm/ pow(2,3));
-		imm3 = (int)(imm/ pow(2,9))>>4;
+		imm1 = imm;
+		imm1 = ((imm1 & (1 << 10)) ;
+		imm1 = imm1 >> 10;	
+		imm2 = imm;
+		imm2 = (imm2<<28);
+		imm2 = imm2>>28;// [4:1]
+		imm3 = imm;
+		imm3 = imm3 << (32-10);
+		imm3 = imm3 >> (32-6);
 		
 		instr->instruction |= opcode;		
 		instr->instruction |= (imm1 << 7);
